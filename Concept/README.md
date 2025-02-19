@@ -23,3 +23,7 @@
 **Idea 2:**
 
 ![](./Images/Logo%20Idea%202.jpeg)
+
+# Name of The App
+
+**HeartsPiek**
