@@ -17,7 +17,9 @@
 # Logo Ideas
 
 **Idea 1:**
+
 ![](./Images/Logo%20Idea%201.jpeg)
 
 **Idea 2:**
+
 ![](./Images/Logo%20Idea%202.jpeg)
