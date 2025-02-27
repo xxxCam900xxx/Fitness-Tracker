@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">HeartsPiek</string>
+    <string name="google_maps_api_key">AIzaSyDwyOVHnbpurMCgcrhPj2mX65Fbjm-gf4k</string>
 </resources>

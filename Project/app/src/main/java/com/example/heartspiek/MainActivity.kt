@@ -1,6 +1,7 @@
 package com.example.heartspiek
 
 import android.Manifest
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.location.Location
@@ -9,6 +10,7 @@ import android.os.Bundle
 import android.os.CountDownTimer
 import android.os.Handler
 import android.os.Looper
+import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
@@ -32,6 +34,7 @@ class MainActivity : AppCompatActivity() {
     // GPS Tracking Variable
     private lateinit var tvDistance: TextView
     private lateinit var tvInterval: TextView
+    private lateinit var btnShowMap: Button
     private lateinit var fusedLocationClient: FusedLocationProviderClient
     private var lastLocation: Location? = null
     private var totalDistance = 0f
@@ -58,7 +61,6 @@ class MainActivity : AppCompatActivity() {
         tvDistance = findViewById(R.id.tvDistance)
         tvInterval = findViewById(R.id.tvInterval)
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
-
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.ACCESS_FINE_LOCATION), 1001)
         } else {
@@ -66,6 +68,11 @@ class MainActivity : AppCompatActivity() {
             requestLocationUpdates()
             startIntervalTimer()
             startLocationService()
+        }
+        btnShowMap = findViewById(R.id.btnShowMap)
+        btnShowMap.setOnClickListener {
+            val intent = Intent(this, MapActivity::class.java)
+            startActivity(intent)
         }
 
     }
@@ -86,6 +93,7 @@ class MainActivity : AppCompatActivity() {
         }.start()
     }
 
+    @SuppressLint("MissingPermission")
     private fun requestLocationUpdates() {
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             return

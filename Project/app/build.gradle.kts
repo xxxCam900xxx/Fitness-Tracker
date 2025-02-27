@@ -47,6 +47,8 @@ dependencies {
 
     // Database
     implementation (libs.room.runtime)
+    implementation(libs.androidx.runner)
+    implementation(libs.androidx.espresso.core)
     kapt (libs.androidx.room.room.compiler)
     implementation (libs.room.common)
     implementation (libs.room.ktx)
@@ -61,6 +63,6 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
 
     // GPS
-    implementation(libs.play.services.maps)
-    implementation(libs.play.services.location)
+    implementation(libs.play.services.location.v2101)
+    implementation(libs.play.services.maps.v1810)
 }
