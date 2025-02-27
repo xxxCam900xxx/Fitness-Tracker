@@ -26,6 +26,10 @@ import java.util.*
 
 class SetAlarmActivity : AppCompatActivity() {
 
+    // Navigation Variable
+    private lateinit var btnShowStats: ImageView
+    private lateinit var btnShowHome: ImageView
+
     // Streak Tracking Variable
     private lateinit var streakManager: StreakManager
     private lateinit var streakTextView: TextView
@@ -60,6 +64,18 @@ class SetAlarmActivity : AppCompatActivity() {
         streakTextView = findViewById(R.id.streakTextView)
         val streak = streakManager.updateStreak()
         streakTextView.text = streak.toString()
+
+        // Navigation
+        btnShowStats = findViewById(R.id.btnShowStats)
+        btnShowStats.setOnClickListener {
+            val intent = Intent(this, StatisticsActivity::class.java)
+            startActivity(intent)
+        }
+        btnShowHome = findViewById(R.id.btnShowHome)
+        btnShowHome.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
 
     }
 

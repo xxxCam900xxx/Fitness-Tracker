@@ -201,6 +201,25 @@
                     android:translationY="-15sp"
                     app:srcCompat="@drawable/heartspiek_logo" />
 
+                <ImageView
+                    android:id="@+id/btnShowStats"
+                    android:layout_width="50sp"
+                    android:layout_height="50sp"
+                    android:layout_gravity="end"
+                    android:layout_marginRight="60sp"
+                    android:elevation="100dp"
+                    android:translationY="40sp"
+                    app:srcCompat="@drawable/statsicon" />
+
+                <ImageView
+                    android:id="@+id/btnShowHome"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="60sp"
+                    android:elevation="100dp"
+                    android:translationY="40sp"
+                    app:srcCompat="@drawable/homeicon" />
+
             </FrameLayout>
         </LinearLayout>
 

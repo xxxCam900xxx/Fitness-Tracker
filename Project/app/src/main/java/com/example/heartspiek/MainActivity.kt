@@ -12,6 +12,7 @@ import android.os.CountDownTimer
 import android.os.Handler
 import android.os.Looper
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
@@ -27,6 +28,10 @@ import com.google.android.gms.location.LocationServices
 import com.google.android.gms.location.Priority
 
 class MainActivity : AppCompatActivity() {
+
+    // Navigation Variable
+    private lateinit var btnShowStats: ImageView
+    private lateinit var btnShowHome: ImageView
 
     // Streak Tracking Variable
     private lateinit var streakManager: StreakManager
@@ -106,6 +111,18 @@ class MainActivity : AppCompatActivity() {
         txtBodyMassTitle = findViewById(R.id.txtBodyMassTitle)
         txtShowBodyMass = findViewById(R.id.txtShowBodyMass)
         loadBodyMass()
+
+        // Navigation
+        btnShowStats = findViewById(R.id.btnShowStats)
+        btnShowStats.setOnClickListener {
+            val intent = Intent(this, StatisticsActivity::class.java)
+            startActivity(intent)
+        }
+        btnShowHome = findViewById(R.id.btnShowHome)
+        btnShowHome.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
 
     }
 
