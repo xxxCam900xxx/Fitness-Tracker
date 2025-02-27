@@ -1,16 +1,47 @@
 package com.example.heartspiek
 
+import android.Manifest
+import android.content.Intent
+import android.content.pm.PackageManager
+import android.location.Location
+import android.os.Build
 import android.os.Bundle
+import android.os.CountDownTimer
+import android.os.Handler
+import android.os.Looper
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
 import com.example.heartspiek.manager.StreakManager
+import com.example.heartspiek.service.LocationService
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationCallback
+import com.google.android.gms.location.LocationRequest
+import com.google.android.gms.location.LocationResult
+import com.google.android.gms.location.LocationServices
+import com.google.android.gms.location.Priority
 
 class MainActivity : AppCompatActivity() {
 
     // Streak Tracking Variable
     private lateinit var streakManager: StreakManager
     private lateinit var streakTextView: TextView
+
+    // GPS Tracking Variable
+    private lateinit var tvDistance: TextView
+    private lateinit var tvInterval: TextView
+    private lateinit var fusedLocationClient: FusedLocationProviderClient
+    private var lastLocation: Location? = null
+    private var totalDistance = 0f
+    private val MIN_DISTANCE_THRESHOLD = 5
+    private val MAX_ACCURACY = 10f
+    private val PREFS_NAME = "DistanceTrackerPrefs"
+    private val DISTANCE_KEY = "totalDistance"
+    private val GPS_INTERVAL = 30 * 1000L // 30 Sekunden
+    private var countDownTimer: CountDownTimer? = null
+    private val handler = Handler(Looper.getMainLooper())
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,5 +54,111 @@ class MainActivity : AppCompatActivity() {
         val streak = streakManager.updateStreak()
         streakTextView.text = streak.toString()
 
+        // GPS Tracking
+        tvDistance = findViewById(R.id.tvDistance)
+        tvInterval = findViewById(R.id.tvInterval)
+        fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
+
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.ACCESS_FINE_LOCATION), 1001)
+        } else {
+            loadDistance()
+            requestLocationUpdates()
+            startIntervalTimer()
+            startLocationService()
+        }
+
+    }
+
+    // GPS
+    private fun startCountdown(timeInMillis: Long) {
+        countDownTimer?.cancel()
+        countDownTimer = object : CountDownTimer(timeInMillis, 100) {
+            override fun onTick(millisUntilFinished: Long) {
+                val seconds = millisUntilFinished / 1000
+                val milliseconds = (millisUntilFinished % 1000) / 10
+                tvInterval.text = "Nächster GPS-Request: $seconds.$milliseconds s"
+            }
+
+            override fun onFinish() {
+                tvInterval.text = "GPS-Request läuft..."
+            }
+        }.start()
+    }
+
+    private fun requestLocationUpdates() {
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            return
+        }
+
+        val locationRequest = LocationRequest.Builder(Priority.PRIORITY_HIGH_ACCURACY, GPS_INTERVAL).build()
+        val locationCallback = object : LocationCallback() {
+            override fun onLocationResult(locationResult: LocationResult) {
+                super.onLocationResult(locationResult)
+                val newLocation = locationResult.lastLocation ?: return
+
+                if (newLocation.accuracy > MAX_ACCURACY) return
+
+                if (lastLocation != null) {
+                    val distance = lastLocation!!.distanceTo(newLocation)
+                    if (distance > MIN_DISTANCE_THRESHOLD) {
+                        totalDistance += distance
+                        tvDistance.text = String.format("%.2f km", totalDistance / 1000)
+                        saveDistance()
+                    }
+                }
+
+                lastLocation = newLocation
+            }
+        }
+
+        fusedLocationClient.requestLocationUpdates(locationRequest, locationCallback, null)
+    }
+
+    private fun startIntervalTimer() {
+        handler.post(object : Runnable {
+            override fun run() {
+                startCountdown(GPS_INTERVAL)
+                handler.postDelayed(this, GPS_INTERVAL)
+            }
+        })
+    }
+
+    private fun startLocationService() {
+        val serviceIntent = Intent(this, LocationService::class.java)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            startForegroundService(serviceIntent)
+        } else {
+            startService(serviceIntent)
+        }
+    }
+
+    private fun saveDistance() {
+        val sharedPreferences = getSharedPreferences(PREFS_NAME, MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
+        editor.putFloat(DISTANCE_KEY, totalDistance)
+        editor.apply()
+    }
+
+    private fun loadDistance() {
+        val sharedPreferences = getSharedPreferences(PREFS_NAME, MODE_PRIVATE)
+        totalDistance = sharedPreferences.getFloat(DISTANCE_KEY, 0f)
+        tvDistance.text = String.format("%.2f km", totalDistance / 1000)
+    }
+
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        when (requestCode) {
+            1001 -> {
+                if ((grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED)) {
+                    requestLocationUpdates()
+                    loadDistance()
+                    startIntervalTimer()
+                    startLocationService()
+                } else {
+                    Toast.makeText(this, "GPS-Berechtigung erforderlich, um den Standort zu verfolgen.", Toast.LENGTH_LONG).show()
+                }
+            }
+        }
     }
 }

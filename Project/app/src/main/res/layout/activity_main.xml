@@ -85,6 +85,89 @@
         android:paddingRight="10sp"
         android:paddingBottom="20sp">
 
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="8sp"
+            app:cardCornerRadius="10dp"
+            android:layout_marginBottom="16dp"
+            app:cardElevation="4dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/cardbackground"
+                android:gravity="center_horizontal|center_vertical"
+                android:orientation="vertical"
+                android:padding="10sp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.75"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.75"
+                        android:gravity="center_vertical"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="start"
+                            android:text="Zurückgelegte Entfernung (in km)"
+                            android:textColor="@color/white"
+                            android:textSize="10sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/tvInterval"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="start"
+                            android:layout_marginTop="4dp"
+                            android:text="Updating Interval: 23s"
+                            android:textColor="#838181"
+                            android:textSize="12sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <Button
+                        android:id="@+id/btnShowMap"
+                        android:layout_width="wrap_content"
+                        android:layout_height="50sp"
+                        android:layout_weight="0"
+                        android:backgroundTint="@color/buttonbackground"
+                        android:text="More"
+                        android:textColor="#FFFFFF"
+                        app:cornerRadius="10dp" />
+
+                </LinearLayout>
+
+                <View
+                    android:id="@+id/view2"
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_marginTop="5sp"
+                    android:layout_marginBottom="5sp"
+                    android:layout_weight="0.75"
+                    android:background="#FFFFFF" />
+
+                <TextView
+                    android:id="@+id/tvDistance"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.75"
+                    android:text="0.00 Km"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    android:textSize="34sp" />
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
 
     </LinearLayout>
 
@@ -119,7 +202,7 @@
                 android:translationY="-15sp"
                 app:srcCompat="@drawable/heartspiek_logo" />
 
-            
+
         </FrameLayout>
 
     </LinearLayout>
