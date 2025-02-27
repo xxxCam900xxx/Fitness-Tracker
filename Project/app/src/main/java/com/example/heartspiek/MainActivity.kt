@@ -2,6 +2,7 @@ package com.example.heartspiek
 
 import android.Manifest
 import android.annotation.SuppressLint
+import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.location.Location
@@ -46,6 +47,11 @@ class MainActivity : AppCompatActivity() {
     private var countDownTimer: CountDownTimer? = null
     private val handler = Handler(Looper.getMainLooper())
 
+    // Alarm Variable
+    private lateinit var btnSetAlarm: Button
+    private lateinit var txtAlarmName: TextView
+    private lateinit var txtAlarmTime: TextView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -75,6 +81,17 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        // Alarm View
+        btnSetAlarm = findViewById(R.id.btnSetAlarm)
+        btnSetAlarm.setOnClickListener {
+            val intent = Intent(this, SetAlarmActivity::class.java)
+            startActivity(intent)
+        }
+        checkForActiveAlarm()
+        txtAlarmName = findViewById(R.id.txtAlarmName)
+        txtAlarmTime = findViewById(R.id.txtAlarmTime)
+        loadAlarmDetails()
+
     }
 
     // GPS
@@ -92,7 +109,6 @@ class MainActivity : AppCompatActivity() {
             }
         }.start()
     }
-
     @SuppressLint("MissingPermission")
     private fun requestLocationUpdates() {
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
@@ -122,7 +138,6 @@ class MainActivity : AppCompatActivity() {
 
         fusedLocationClient.requestLocationUpdates(locationRequest, locationCallback, null)
     }
-
     private fun startIntervalTimer() {
         handler.post(object : Runnable {
             override fun run() {
@@ -131,7 +146,6 @@ class MainActivity : AppCompatActivity() {
             }
         })
     }
-
     private fun startLocationService() {
         val serviceIntent = Intent(this, LocationService::class.java)
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -140,20 +154,17 @@ class MainActivity : AppCompatActivity() {
             startService(serviceIntent)
         }
     }
-
     private fun saveDistance() {
         val sharedPreferences = getSharedPreferences(PREFS_NAME, MODE_PRIVATE)
         val editor = sharedPreferences.edit()
         editor.putFloat(DISTANCE_KEY, totalDistance)
         editor.apply()
     }
-
     private fun loadDistance() {
         val sharedPreferences = getSharedPreferences(PREFS_NAME, MODE_PRIVATE)
         totalDistance = sharedPreferences.getFloat(DISTANCE_KEY, 0f)
         tvDistance.text = String.format("%.2f km", totalDistance / 1000)
     }
-
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         when (requestCode) {
@@ -167,6 +178,36 @@ class MainActivity : AppCompatActivity() {
                     Toast.makeText(this, "GPS-Berechtigung erforderlich, um den Standort zu verfolgen.", Toast.LENGTH_LONG).show()
                 }
             }
+        }
+    }
+
+    // Alarm
+    private fun loadAlarmDetails() {
+        val sharedPreferences = getSharedPreferences("AlarmPrefs", MODE_PRIVATE)
+        val alarmName = sharedPreferences.getString("ALARM_NAME", "") ?: ""
+        val alarmTime = sharedPreferences.getString("ALARM_TIME", "") ?: ""
+
+        if (alarmName != "" && alarmTime != "") {
+            updateAlarmDetails(alarmName, alarmTime)
+        }
+    }
+
+    private fun updateAlarmDetails(alarmName: String, alarmTime: String) {
+        txtAlarmName.text = "Name: $alarmName"
+        txtAlarmTime.text = "Startet um: $alarmTime"
+    }
+
+    private fun checkForActiveAlarm() {
+        val sharedPref = getSharedPreferences("alarm_prefs", Context.MODE_PRIVATE)
+        val alarmActive = sharedPref.getBoolean("alarm_active", false)
+
+        if (alarmActive) {
+            with(sharedPref.edit()) {
+                putBoolean("alarm_active", false)
+                apply()
+            }
+            val intent = Intent(this, AlarmActivity::class.java)
+            startActivity(intent)
         }
     }
 }

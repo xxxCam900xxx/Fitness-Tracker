@@ -88,130 +88,103 @@
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="8sp"
-            app:cardCornerRadius="10dp"
-            android:layout_marginBottom="16dp"
-            app:cardElevation="4dp">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/cardbackground"
-                android:gravity="center_horizontal|center_vertical"
-                android:orientation="vertical"
-                android:padding="10sp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="0.75"
-                    android:orientation="horizontal">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="0.75"
-                        android:gravity="center_vertical"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="start"
-                            android:text="Zurückgelegte Entfernung (in km)"
-                            android:textColor="@color/white"
-                            android:textSize="10sp"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:id="@+id/tvInterval"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="start"
-                            android:layout_marginTop="4dp"
-                            android:text="Updating Interval: 23s"
-                            android:textColor="#838181"
-                            android:textSize="12sp"
-                            android:textStyle="bold" />
-                    </LinearLayout>
-
-                    <Button
-                        android:id="@+id/btnShowMap"
-                        android:layout_width="wrap_content"
-                        android:layout_height="50sp"
-                        android:layout_weight="0"
-                        android:backgroundTint="@color/buttonbackground"
-                        android:text="More"
-                        android:textColor="#FFFFFF"
-                        app:cornerRadius="10dp" />
-
-                </LinearLayout>
-
-                <View
-                    android:id="@+id/view2"
-                    android:layout_width="match_parent"
-                    android:layout_height="2dp"
-                    android:layout_marginTop="5sp"
-                    android:layout_marginBottom="5sp"
-                    android:layout_weight="0.75"
-                    android:background="#FFFFFF" />
-
-                <TextView
-                    android:id="@+id/tvDistance"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.75"
-                    android:text="0.00 Km"
-                    android:textAlignment="center"
-                    android:textColor="@color/white"
-                    android:textSize="34sp" />
-
-            </LinearLayout>
-        </androidx.cardview.widget.CardView>
-
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="20sp"
             app:cardBackgroundColor="@color/cardbackground"
             app:cardCornerRadius="10dp"
             app:contentPadding="10dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:layout_height="match_parent"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textView6"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:text="Alarm einstellen:"
+                    android:textColor="@color/white"
+                    android:textSize="24sp" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="#FFFFFF" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_weight="0.75"
-                    android:gravity="center_vertical"
-                    android:orientation="vertical">
+                    android:orientation="horizontal">
 
                     <TextView
-                        android:id="@+id/txtAlarmName"
-                        android:layout_width="match_parent"
+                        android:id="@+id/textView7"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Alarm ausgeschaltet"
-                        android:textColor="@color/white" />
+                        android:layout_weight="0.6"
+                        android:text="Name:"
+                        android:textColor="@color/white"
+                        android:textSize="20sp" />
 
-                    <TextView
-                        android:id="@+id/txtAlarmTime"
-                        android:layout_width="match_parent"
+                    <EditText
+                        android:id="@+id/editAlarmName"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/white" />
+                        android:layout_weight="1"
+                        android:ems="10"
+                        android:inputType="text"
+                        android:text="Name" />
                 </LinearLayout>
 
-                <Button
-                    android:id="@+id/btnSetAlarm"
-                    android:layout_width="wrap_content"
-                    android:layout_height="50sp"
-                    android:layout_weight="0"
-                    android:backgroundTint="@color/buttonbackground"
-                    android:text="Einstellen"
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="#FFFFFF" />
+
+                <TextView
+                    android:id="@+id/tvAlarmtime"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.6"
+                    android:text="Zeit:"
                     android:textColor="@color/white"
-                    app:cornerRadius="10sp" />
+                    android:textSize="20sp" />
+
+                <TimePicker
+                    android:id="@+id/timePicker"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:timePickerMode="spinner" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/btnCancelAlarm"
+                        android:layout_width="50sp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="10sp"
+                        android:layout_weight="1"
+                        android:backgroundTint="@color/cancelbuttonbackgroudcolor"
+                        android:text="Alarm löschen"
+                        android:textColor="@color/white"
+                        app:cornerRadius="10dp" />
+
+                    <Button
+                        android:id="@+id/btnSetAlarm"
+                        android:layout_width="50sp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10sp"
+                        android:layout_weight="1"
+                        android:backgroundTint="@color/savebuttonbackgroudcolor"
+                        android:text="Alarm setzen"
+                        android:textColor="@color/white"
+                        app:cornerRadius="10dp" />
+
+                </LinearLayout>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
@@ -247,7 +220,6 @@
                 android:elevation="100dp"
                 android:translationY="-15sp"
                 app:srcCompat="@drawable/heartspiek_logo" />
-
 
         </FrameLayout>
 
