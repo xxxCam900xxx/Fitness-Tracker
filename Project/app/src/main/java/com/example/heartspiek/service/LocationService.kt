@@ -1,6 +1,5 @@
 package com.example.heartspiek.service
 
-import android.Manifest
 import android.annotation.SuppressLint
 import android.app.*
 import android.content.Context
@@ -60,7 +59,7 @@ class LocationService : Service() {
         totalDistance = sharedPreferences.getFloat(DISTANCE_KEY, 0f)
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
 
-        // TODO Notification
+        startForegroundService()
         requestLocationUpdates()
     }
 
@@ -78,7 +77,19 @@ class LocationService : Service() {
         sharedPreferences.edit().putFloat(DISTANCE_KEY, totalDistance).apply()
     }
 
-    // TODO Notification
+    private fun startForegroundService() {
+        val channelId = "LocationServiceChannel"
+        val channel = NotificationChannel(channelId, "GPS Tracking", NotificationManager.IMPORTANCE_LOW)
+        getSystemService(NotificationManager::class.java).createNotificationChannel(channel)
+
+        val notification = NotificationCompat.Builder(this, channelId)
+            .setContentTitle("HeartsPiek läuft")
+            .setContentText("Distanz wird im Hintergrund getrackt...")
+            .setSmallIcon(android.R.drawable.ic_dialog_map)
+            .build()
+
+        startForeground(NOTIFICATION_ID, notification)
+    }
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
         return START_STICKY
