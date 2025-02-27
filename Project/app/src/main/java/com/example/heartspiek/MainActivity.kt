@@ -52,6 +52,11 @@ class MainActivity : AppCompatActivity() {
     private lateinit var txtAlarmName: TextView
     private lateinit var txtAlarmTime: TextView
 
+    // Bodymass Tracking Variable
+    private lateinit var btnSetBodyMass: Button
+    private lateinit var txtShowBodyMass: TextView
+    private lateinit var txtBodyMassTitle: TextView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -91,6 +96,16 @@ class MainActivity : AppCompatActivity() {
         txtAlarmName = findViewById(R.id.txtAlarmName)
         txtAlarmTime = findViewById(R.id.txtAlarmTime)
         loadAlarmDetails()
+
+        // Bodymass View
+        btnSetBodyMass = findViewById(R.id.btnSetBodyMass)
+        btnSetBodyMass.setOnClickListener {
+            val intent = Intent(this, SetBodymassActivity::class.java)
+            startActivity(intent)
+        }
+        txtBodyMassTitle = findViewById(R.id.txtBodyMassTitle)
+        txtShowBodyMass = findViewById(R.id.txtShowBodyMass)
+        loadBodyMass()
 
     }
 
@@ -191,12 +206,10 @@ class MainActivity : AppCompatActivity() {
             updateAlarmDetails(alarmName, alarmTime)
         }
     }
-
     private fun updateAlarmDetails(alarmName: String, alarmTime: String) {
         txtAlarmName.text = "Name: $alarmName"
         txtAlarmTime.text = "Startet um: $alarmTime"
     }
-
     private fun checkForActiveAlarm() {
         val sharedPref = getSharedPreferences("alarm_prefs", Context.MODE_PRIVATE)
         val alarmActive = sharedPref.getBoolean("alarm_active", false)
@@ -209,5 +222,20 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, AlarmActivity::class.java)
             startActivity(intent)
         }
+    }
+
+    // Bodymass
+    private fun loadBodyMass() {
+        val sharedPreferences = getSharedPreferences("BodyPrefs", MODE_PRIVATE)
+        val weight = sharedPreferences.getString("BODYMASS_WEIGHT", "") ?: ""
+        val height = sharedPreferences.getString("BODYMASS_HEIGHT", "") ?: ""
+
+        if (weight != "" && height != "") {
+            updateBodymassDetails(weight, height)
+        }
+    }
+    private fun updateBodymassDetails(weight: String, height: String) {
+        txtBodyMassTitle.text = "Gewicht und Höhe heute:"
+        txtShowBodyMass.text = "$height cm mit $weight kg"
     }
 }

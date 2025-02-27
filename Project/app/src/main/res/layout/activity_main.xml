@@ -215,6 +215,52 @@
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20sp"
+            app:cardBackgroundColor="@color/cardbackground"
+            app:cardCornerRadius="10dp"
+            app:contentPadding="10dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.75"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/txtBodyMassTitle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Gewicht eingeben!"
+                        android:textColor="@color/white" />
+
+                    <TextView
+                        android:id="@+id/txtShowBodyMass"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white" />
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/btnSetBodyMass"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50sp"
+                    android:layout_weight="0"
+                    android:backgroundTint="@color/buttonbackground"
+                    android:text="Messen"
+                    android:textColor="@color/white"
+                    app:cornerRadius="10sp" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
     </LinearLayout>
 
     <LinearLayout

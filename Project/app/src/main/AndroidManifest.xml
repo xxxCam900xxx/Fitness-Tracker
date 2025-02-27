@@ -27,6 +27,9 @@
         android:theme="@style/Theme.HeartsPiek"
         tools:targetApi="31">
         <activity
+            android:name=".SetBodymassActivity"
+            android:exported="false" />
+        <activity
             android:name=".SetAlarmActivity"
             android:exported="false" />
         <activity

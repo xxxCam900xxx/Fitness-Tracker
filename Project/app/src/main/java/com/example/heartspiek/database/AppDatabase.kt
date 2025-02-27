@@ -5,11 +5,14 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import android.content.Context
 import com.example.heartspiek.database.dao.DailyDistanceDao
+import com.example.heartspiek.database.dao.MeasurementDao
 import com.example.heartspiek.database.entity.DailyDistance
+import com.example.heartspiek.database.entity.Measurement
 
-@Database(entities = [DailyDistance::class], version = 3, exportSchema = false)
+@Database(entities = [DailyDistance::class, Measurement::class], version = 3, exportSchema = false)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun dailyDistanceDao(): DailyDistanceDao
+    abstract fun measurementDao(): MeasurementDao
 
     companion object {
         @Volatile
