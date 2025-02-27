@@ -1,4 +1,4 @@
-package com.example.fitnesstracker
+package com.example.heartspiek
 
 import org.junit.Test
 
