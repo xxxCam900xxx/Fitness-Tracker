@@ -65,4 +65,7 @@ dependencies {
     // GPS
     implementation(libs.play.services.location.v2101)
     implementation(libs.play.services.maps.v1810)
+
+    // Stats
+    implementation (libs.mpandroidchart)
 }
