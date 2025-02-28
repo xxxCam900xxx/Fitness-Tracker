@@ -37,3 +37,11 @@ tasks.named("check").configure {
 
 # Publish Page
 ![HeartsPiek Publish Page](/Concept/Images/Publish.png)
+
+# Benutzte Quellen
+- [Andorid Studio Dokumentation](https://developer.android.com/studio?hl=de)
+- [Kotlin Dokumentation](https://www.w3schools.com/KOTLIN/index.php)
+- [StackOverflow Fehlersuche](https://stackoverflow.com/questions)
+- [Figma - Designplatform](http://figma.com/)
+- [Icon Generator Romannurik](https://romannurik.github.io/AndroidAssetStudio/icons-launcher.html)
+- [Google Cloud Console](https://console.cloud.google.com/google/maps-apis/overview?pli=1)
