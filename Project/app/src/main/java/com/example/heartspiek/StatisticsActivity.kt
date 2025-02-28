@@ -51,10 +51,8 @@ class StatisticsActivity : AppCompatActivity() {
             updateChart(lineChartHeight, measurements.mapIndexed { index, m -> Entry(index.toFloat(), m.height) }, "Höhe")
             updateChart(lineChartWeight, measurements.mapIndexed { index, m -> Entry(index.toFloat(), m.weight) }, "Gewicht")
         })
-        viewModelDistance.getDistanceForToday().observe(this, Observer { distances ->
-            distances?.let {
-                updateChart(lineChartDistance, listOf(Entry(0f, it.distance)), "Strecke")
-            }
+        viewModelDistance.allDistance.observe(this, Observer { distances ->
+            updateChart(lineChartDistance, distances.mapIndexed { index, m -> Entry(index.toFloat(), m.distance) }, "Strecke")
         })
 
         // Streak Tracking
