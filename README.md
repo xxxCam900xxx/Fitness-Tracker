@@ -23,6 +23,11 @@ app/build/reports/lint-results.html
 
 ### Wie starte ich Linter? (Automate)
 Wenn Sie Android Studio builden, sollte eine Task aufgerufen werden welches den Linter ausführt.
+```kts
+tasks.named("check").configure {
+        dependsOn("lint")
+    }
+```
 
 ### Logs
 - [Logs.txt (28-02-2025)](/Logs/Logs-28-02-2025.txt)
