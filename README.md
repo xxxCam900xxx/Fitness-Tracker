@@ -21,6 +21,9 @@ Die Ergebnisse findest du dann unter:
 app/build/reports/lint-results.html
 ```
 
+### Wie starte ich Linter? (Automate)
+Wenn Sie Android Studio builden, sollte eine Task aufgerufen werden welches den Linter ausführt.
+
 ### Author & Entwickler
 - Came
 

@@ -34,6 +34,11 @@ android {
     kotlinOptions {
         jvmTarget = "11"
     }
+
+    tasks.named("check").configure {
+        dependsOn("lint")
+    }
+
 }
 
 dependencies {
