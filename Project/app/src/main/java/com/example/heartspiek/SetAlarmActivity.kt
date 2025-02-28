@@ -166,19 +166,17 @@ class SetAlarmActivity : AppCompatActivity() {
         startActivity(mainActivityIntent)
     }
     private fun createNotificationChannel() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            val channel = NotificationChannel(
-                "alarm_channel",
-                "Alarm Benachrichtigungen",
-                NotificationManager.IMPORTANCE_HIGH
-            ).apply {
-                description = "Dieser Kanal wird für Alarme genutzt"
-            }
-
-            val notificationManager: NotificationManager =
-                getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-            notificationManager.createNotificationChannel(channel)
+        val channel = NotificationChannel(
+            "alarm_channel",
+            "Alarm Benachrichtigungen",
+            NotificationManager.IMPORTANCE_HIGH
+        ).apply {
+            description = "Dieser Kanal wird für Alarme genutzt"
         }
+
+        val notificationManager: NotificationManager =
+            getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+        notificationManager.createNotificationChannel(channel)
     }
 
 }

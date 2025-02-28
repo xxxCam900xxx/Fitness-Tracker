@@ -181,11 +181,7 @@ class MainActivity : AppCompatActivity() {
     }
     private fun startLocationService() {
         val serviceIntent = Intent(this, LocationService::class.java)
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            startForegroundService(serviceIntent)
-        } else {
-            startService(serviceIntent)
-        }
+        startForegroundService(serviceIntent)
     }
     private fun saveDistance() {
         val sharedPreferences = getSharedPreferences(PREFS_NAME, MODE_PRIVATE)
