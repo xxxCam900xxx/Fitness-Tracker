@@ -1,0 +1,205 @@
+commit 731daac80e23bafe9a89e2ce30c5254fd40ce043
+Author: Cam <112639963+CameronMeile@users.noreply.github.com>
+Date:   Fri Feb 28 13:15:41 2025 +0100
+
+    ✨ Add: Fehlender StreakManager zur SetBodymassActivity hinzugefügt
+
+commit dae162f93c9504ce3bd3eb2ccafb7e0df8682782
+Author: Cam <112639963+CameronMeile@users.noreply.github.com>
+Date:   Fri Feb 28 12:57:10 2025 +0100
+
+    🗑️ Del: Unbenutze Colors entfernt
+
+commit ddf725f2965481ca7e9f56d8cf2e1c5fd0713bd7
+Author: Cam <112639963+CameronMeile@users.noreply.github.com>
+Date:   Fri Feb 28 12:50:06 2025 +0100
+
+    🔧 Upd: Layout AlarmActivity angepasst
+
+commit 28ee24e5f8b4f2bf4fd309f558a32d3726e9cf07
+Author: Cam <112639963+CameronMeile@users.noreply.github.com>
+Date:   Fri Feb 28 12:49:17 2025 +0100
+
+    🐛 FIx #2: Wrong Fragment Tag replaced
+
+commit 8ef6a92dc8d5a0af0104fd2809ef960025e34bae
+Author: Cam <112639963+CameronMeile@users.noreply.github.com>
+Date:   Fri Feb 28 12:48:07 2025 +0100
+
+    🐛 Fix: Removed Obsolete SDK_INT Version Check
+
+commit 74ecf13a5002409851733517f200c7812509ecd4
+Author: Cam <112639963+CameronMeile@users.noreply.github.com>
+Date:   Fri Feb 28 12:40:31 2025 +0100
+
+    🐛 Fix: Extraneous text in resource file setBodymass xml
+
+commit 502e17c2dfe72cf3c8e88fb908b726dd8cbe842d
+Author: Cam <112639963+CameronMeile@users.noreply.github.com>
+Date:   Fri Feb 28 12:39:56 2025 +0100
+
+    🐛 Fix: Removed never used Params
+
+commit fca319331d8e021dc597941e9b76bfb5523667aa
+Author: Cam <112639963+CameronMeile@users.noreply.github.com>
+Date:   Fri Feb 28 12:19:56 2025 +0100
+
+    🐛 Fix: Wrong Fragment Tag replaced
+
+commit 37a5dac812f811644c002262d9f024ceb85cfd11
+Author: Cam <112639963+CameronMeile@users.noreply.github.com>
+Date:   Fri Feb 28 11:38:00 2025 +0100
+
+    🐛 Fix: Implied default locale in case conversion
+
+commit 022cdb687759f11b0ce56414c3ef67a5563dde1f
+Author: Cam <112639963+CameronMeile@users.noreply.github.com>
+Date:   Fri Feb 28 11:31:55 2025 +0100
+
+    ⚡️ Add: Linter hinzugefügt mit Automate on Build
+
+commit 08e62708338cf247e866ec95874c026a722a60f6
+Author: Cam <112639963+CameronMeile@users.noreply.github.com>
+Date:   Fri Feb 28 11:23:55 2025 +0100
+
+    🔧 Upd: Publish Image StatsView überarbeitet
+
+commit 3400e75c382b3daa8fd2357fff58225406a2e745
+Author: Cam <112639963+CameronMeile@users.noreply.github.com>
+Date:   Fri Feb 28 11:10:09 2025 +0100
+
+    ✨ Feat: Stats konfigurations Dropdown hinzugefügt
+
+commit f65182ba1cd58e9ea6f1e38e4fc7f5f0754e1f5f
+Author: Cam <112639963+CameronMeile@users.noreply.github.com>
+Date:   Fri Feb 28 09:54:06 2025 +0100
+
+    📝 Add: README "Wie starte ich Linter?" hinzugefügt
+
+commit 072abbe37b9ab35b0975abad0f1be100391008e4
+Author: Cam <112639963+CameronMeile@users.noreply.github.com>
+Date:   Fri Feb 28 09:53:20 2025 +0100
+
+    🔧 Upd: Renamed ViewModelFactory T to VM for ViewModel
+
+commit 73ca7f5bb6d2247337e268d580eb62d2d4215f67
+Author: Cam <112639963+CameronMeile@users.noreply.github.com>
+Date:   Fri Feb 28 09:02:11 2025 +0100
+
+    📝 Add: README Inhalt hinzugefügt
+
+commit 34fed90b9bd8097ea93fe438c6833370bc012a4a
+Author: Cam <112639963+CameronMeile@users.noreply.github.com>
+Date:   Fri Feb 28 08:43:20 2025 +0100
+
+    🐛 Fix: DailyDistance Stats richitg darstellen
+
+commit 545df5deb271c79308f189618ddc4475e87f8a40
+Author: Cam <112639963+CameronMeile@users.noreply.github.com>
+Date:   Fri Feb 28 08:41:35 2025 +0100
+
+    🔧 Upd: Methods angepasst an Messurement Dao
+
+commit 6ddc586eefc54e0b0631b21d2ea1a75012eae219
+Author: Developer <112639963+xxxCam900xxx@users.noreply.github.com>
+Date:   Thu Feb 27 23:45:39 2025 +0100
+
+    🔨 Env: Generated Android Studio Files
+
+commit cf0b6ee3633fb03aee5000fa960ec4618e63a203
+Author: Developer <112639963+xxxCam900xxx@users.noreply.github.com>
+Date:   Thu Feb 27 23:44:21 2025 +0100
+
+    🐛 Fix: Number InputType Validation
+
+commit 44722e5695bfb65d222d7a3700839e2ad8608261
+Author: Developer <112639963+xxxCam900xxx@users.noreply.github.com>
+Date:   Thu Feb 27 23:41:25 2025 +0100
+
+    ✨ Feat: LineCharts hinzugefügt
+
+commit 62cd8fc0c640e6b0f6e248a4a488374b853bc0a2
+Author: Developer <112639963+xxxCam900xxx@users.noreply.github.com>
+Date:   Thu Feb 27 23:37:43 2025 +0100
+
+    🔧 Upd: Navigation zu allen Activitys hinzugefügt
+
+commit 33ec5202ca6ec814633a31481b1aa30fcc5f8897
+Author: Developer <112639963+xxxCam900xxx@users.noreply.github.com>
+Date:   Thu Feb 27 23:36:42 2025 +0100
+
+    ✨ Add: StatsActivity hinzugefügt mit Navigation
+
+commit 65b153b6f1f2f04c96baece4670ce3ee0f6f0c7c
+Author: Developer <112639963+xxxCam900xxx@users.noreply.github.com>
+Date:   Thu Feb 27 23:19:29 2025 +0100
+
+    ✨ Feat: SplashActivity hinzugefügt (PreScreen)
+
+commit 83477e90d5f6f61b35324b2b3d016a42314cf1b0
+Author: Developer <112639963+xxxCam900xxx@users.noreply.github.com>
+Date:   Thu Feb 27 23:15:18 2025 +0100
+
+    🔧 Upd: Logo in Launcher ersetzt
+
+commit eefb487288f770e6b4fbf0f937af07b462e16c7d
+Author: Developer <112639963+xxxCam900xxx@users.noreply.github.com>
+Date:   Thu Feb 27 23:08:31 2025 +0100
+
+    ✨ Feat: SetBodymass mit Datenbank abspeicherung eingebaut
+
+commit 26b00d8e865bf609910d3d7a7d32d0e73c48d7f2
+Author: Developer <112639963+xxxCam900xxx@users.noreply.github.com>
+Date:   Thu Feb 27 23:00:28 2025 +0100
+
+    ✨ Feat: Alarm hinzugefügt (Activitys, Receivers)
+
+commit 138e075da9b70ce7b45a595f48119899ea599e9a
+Author: Developer <112639963+xxxCam900xxx@users.noreply.github.com>
+Date:   Thu Feb 27 22:47:25 2025 +0100
+
+    ✨ Feat: MapActivity mit GoogleMap hinzugefügt
+
+commit 14c74c72724414b9560c3c822e3b30fcb32308af
+Author: Developer <112639963+xxxCam900xxx@users.noreply.github.com>
+Date:   Thu Feb 27 22:10:52 2025 +0100
+
+    ✨ Add: Service & Berechtigung für LocationService eingebunden
+
+commit c4bcd21502ccdc0f79e336552cfddac004faddcc
+Author: Developer <112639963+xxxCam900xxx@users.noreply.github.com>
+Date:   Thu Feb 27 22:10:12 2025 +0100
+
+    🐛 Fix: Notification wurde hinzugefügt um den Service richtig zu starten
+
+commit 762efe013c6a7531a75291eb0aedb42c4b1cef32
+Author: Developer <112639963+xxxCam900xxx@users.noreply.github.com>
+Date:   Thu Feb 27 21:52:19 2025 +0100
+
+    ✨ Feat: GPS Tracking mit Datenabspeichern in einer Datenbank
+
+commit 684396400b4b4f6e5ea1fd40338ff535aad37aba
+Author: Developer <112639963+xxxCam900xxx@users.noreply.github.com>
+Date:   Thu Feb 27 21:12:46 2025 +0100
+
+    ✨ Feat: DailyStreak hinzugefügt
+
+commit 88e9c505acdc96f62e3cf235f69d2920d336a3e5
+Author: Developer <112639963+xxxCam900xxx@users.noreply.github.com>
+Date:   Thu Feb 27 21:08:47 2025 +0100
+
+    ✨ Add: Color Pallet hinzugefügt
+
+commit 8a0e0d62da63bbacf81b04e0ae1ad3b45bbe514d
+Author: Developer <112639963+xxxCam900xxx@users.noreply.github.com>
+Date:   Thu Feb 27 21:08:19 2025 +0100
+
+    ✨ Add: Icons für Activitys hinzugefügt
+
+commit 32971fd9aea20c5e8d0e55bd531d6f1246046a1a
+Author: Developer <112639963+xxxCam900xxx@users.noreply.github.com>
+Date:   Thu Feb 27 20:27:23 2025 +0100
+
+    🚀 Proj: init HeartsPiek
+
+
