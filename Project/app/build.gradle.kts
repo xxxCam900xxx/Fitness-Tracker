@@ -54,6 +54,7 @@ dependencies {
     implementation (libs.room.runtime)
     implementation(libs.androidx.runner)
     implementation(libs.androidx.espresso.core)
+    implementation(libs.androidx.fragment)
     kapt (libs.androidx.room.room.compiler)
     implementation (libs.room.common)
     implementation (libs.room.ktx)
@@ -70,6 +71,9 @@ dependencies {
     // GPS
     implementation(libs.play.services.location.v2101)
     implementation(libs.play.services.maps.v1810)
+
+    // Google Maps Fragment
+    implementation (libs.androidx.fragment.ktx)
 
     // Stats
     implementation (libs.mpandroidchart)
