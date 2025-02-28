@@ -57,7 +57,7 @@ class SetAlarmActivity : AppCompatActivity() {
         alarmManager = getSystemService(ALARM_SERVICE) as AlarmManager
         createNotificationChannel()
         btnSetAlarm.setOnClickListener { checkAndRequestPermissions() }
-        btnCancelAlarm.setOnClickListener { cancelAlarm("Alarm ausgeschaltet", "") }
+        btnCancelAlarm.setOnClickListener { cancelAlarm() }
 
         // Streak Tracking
         streakManager = StreakManager(this)
@@ -144,7 +144,7 @@ class SetAlarmActivity : AppCompatActivity() {
         val mainActivityIntent = Intent(this, MainActivity::class.java)
         startActivity(mainActivityIntent)
     }
-    private fun cancelAlarm(alarmName: String, alarmTime: String) {
+    private fun cancelAlarm() {
         val intent = Intent(this, AlarmReceiver::class.java)
         pendingIntent = PendingIntent.getBroadcast(
             this,
