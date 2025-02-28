@@ -98,6 +98,41 @@
 
                 <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="20dp"
+                    app:cardBackgroundColor="@color/cardbackground"
+                    app:cardCornerRadius="10dp"
+                    app:contentPadding="10dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/textView8"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="10dp"
+                            android:text="Anzeige Konfigurieren:"
+                            android:textColor="@color/white"
+                            android:textSize="24sp" />
+
+                        <Spinner
+                            android:id="@+id/statistics_dropdown"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/buttonbackground"
+                            android:backgroundTint="@color/buttonbackground"
+                            android:entries="@array/statistics_options"
+                            android:foregroundTint="@color/white"
+                            android:padding="10dp" />
+
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="20dp"
                     app:cardBackgroundColor="@color/cardbackground"

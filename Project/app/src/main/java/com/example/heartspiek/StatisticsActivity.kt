@@ -2,7 +2,11 @@ package com.example.heartspiek
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import android.widget.ImageView
+import android.widget.Spinner
 import android.widget.TextView
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -34,6 +38,9 @@ class StatisticsActivity : AppCompatActivity() {
     private lateinit var lineChartWeight: LineChart
     private lateinit var lineChartDistance: LineChart
 
+    // Spinner Variable
+    private lateinit var statisticsSpinner: Spinner
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_statistics)
@@ -46,14 +53,24 @@ class StatisticsActivity : AppCompatActivity() {
         configureChart(lineChartWeight)
         configureChart(lineChartDistance)
 
-        // Stats Observe
-        viewModelMeasurements.allMeasurements.observe(this, Observer { measurements ->
-            updateChart(lineChartHeight, measurements.mapIndexed { index, m -> Entry(index.toFloat(), m.height) }, "Höhe")
-            updateChart(lineChartWeight, measurements.mapIndexed { index, m -> Entry(index.toFloat(), m.weight) }, "Gewicht")
-        })
-        viewModelDistance.allDistance.observe(this, Observer { distances ->
-            updateChart(lineChartDistance, distances.mapIndexed { index, m -> Entry(index.toFloat(), m.distance) }, "Strecke")
-        })
+        // Spinner
+        statisticsSpinner = findViewById(R.id.statistics_dropdown)
+        val adapter = ArrayAdapter.createFromResource(this, R.array.statistics_options, android.R.layout.simple_spinner_item)
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        statisticsSpinner.adapter = adapter
+        statisticsSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                when (position) {
+                    0 -> showLast7Days()
+                    1 -> showLast30Days()
+                    2 -> showAllTime()
+                }
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+                showLast7Days()
+            }
+        }
 
         // Streak Tracking
         streakManager = StreakManager(this)
@@ -74,7 +91,40 @@ class StatisticsActivity : AppCompatActivity() {
         }
     }
 
-    // Stats
+    // Data
+    private fun showLast7Days() {
+        viewModelMeasurements.allMeasurements.observe(this, Observer { measurements ->
+            val last7Measurements = measurements.takeLast(7)
+            updateChart(lineChartHeight, last7Measurements.mapIndexed { index, m -> Entry(index.toFloat(), m.height) }, "Höhe")
+            updateChart(lineChartWeight, last7Measurements.mapIndexed { index, m -> Entry(index.toFloat(), m.weight) }, "Gewicht")
+        })
+        viewModelDistance.allDistance.observe(this, Observer { distances ->
+            val last7Distances = distances.takeLast(7)
+            updateChart(lineChartDistance, last7Distances.mapIndexed { index, m -> Entry(index.toFloat(), m.distance) }, "Strecke")
+        })
+    }
+    private fun showLast30Days() {
+        viewModelMeasurements.allMeasurements.observe(this, Observer { measurements ->
+            val last30Measurements = measurements.takeLast(30)
+            updateChart(lineChartHeight, last30Measurements.mapIndexed { index, m -> Entry(index.toFloat(), m.height) }, "Höhe")
+            updateChart(lineChartWeight, last30Measurements.mapIndexed { index, m -> Entry(index.toFloat(), m.weight) }, "Gewicht")
+        })
+        viewModelDistance.allDistance.observe(this, Observer { distances ->
+            val last30Distances = distances.takeLast(30)
+            updateChart(lineChartDistance, last30Distances.mapIndexed { index, m -> Entry(index.toFloat(), m.distance) }, "Strecke")
+        })
+    }
+    private fun showAllTime() {
+        viewModelMeasurements.allMeasurements.observe(this, Observer { measurements ->
+            updateChart(lineChartHeight, measurements.mapIndexed { index, m -> Entry(index.toFloat(), m.height) }, "Höhe")
+            updateChart(lineChartWeight, measurements.mapIndexed { index, m -> Entry(index.toFloat(), m.weight) }, "Gewicht")
+        })
+        viewModelDistance.allDistance.observe(this, Observer { distances ->
+            updateChart(lineChartDistance, distances.mapIndexed { index, m -> Entry(index.toFloat(), m.distance) }, "Strecke")
+        })
+    }
+
+    // Chart
     private fun configureChart(chart: LineChart) {
         chart.axisLeft.setDrawGridLines(false)
         chart.axisRight.isEnabled = true

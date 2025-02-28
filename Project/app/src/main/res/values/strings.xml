@@ -1,4 +1,11 @@
 <resources>
     <string name="app_name">HeartsPiek</string>
     <string name="google_maps_api_key">AIzaSyDwyOVHnbpurMCgcrhPj2mX65Fbjm-gf4k</string>
+
+    <!-- Stats -->
+    <string-array name="statistics_options">
+        <item>Letzte 7 Tage</item>
+        <item>Letzte 30 Tage</item>
+        <item>Gesamter Zeitraum</item>
+    </string-array>
 </resources>
