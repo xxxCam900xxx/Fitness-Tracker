@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="background">#181818</color>
     <color name="cardbackground">#333333</color>
-    <color name="cardforeground">#636363FF</color>
     <color name="buttonbackground">#555454</color>
     <color name="savebuttonbackgroudcolor">#5AB65A</color>
     <color name="cancelbuttonbackgroudcolor">#E66B6B</color>
