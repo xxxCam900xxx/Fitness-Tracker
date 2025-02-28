@@ -10,6 +10,7 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.example.heartspiek.database.entity.Measurement
+import com.example.heartspiek.manager.StreakManager
 import com.example.heartspiek.uitils.MeasurementViewModel
 import com.example.heartspiek.uitils.MeasurementViewModelFactory
 import kotlinx.coroutines.launch
@@ -18,6 +19,7 @@ import java.util.Date
 import java.util.Locale
 
 class SetBodymassActivity : AppCompatActivity() {
+    // ViewModel Variable
     private val viewModel: MeasurementViewModel by viewModels {
         MeasurementViewModelFactory(application)
     }
@@ -25,6 +27,10 @@ class SetBodymassActivity : AppCompatActivity() {
     // Navigation Variable
     private lateinit var btnShowStats: ImageView
     private lateinit var btnShowHome: ImageView
+
+    // Streak Tracking Variable
+    private lateinit var streakManager: StreakManager
+    private lateinit var streakTextView: TextView
 
     // Date Variable
     private lateinit var tvcurrentDate: TextView
@@ -77,6 +83,12 @@ class SetBodymassActivity : AppCompatActivity() {
             }
             startActivity(mainActivityIntent)
         }
+
+        // Streak Tracking
+        streakManager = StreakManager(this)
+        streakTextView = findViewById(R.id.streakTextView)
+        val streak = streakManager.updateStreak()
+        streakTextView.text = streak.toString()
 
         // Navigation
         btnShowStats = findViewById(R.id.btnShowStats)
