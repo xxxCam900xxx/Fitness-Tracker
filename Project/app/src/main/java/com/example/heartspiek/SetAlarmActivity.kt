@@ -133,7 +133,7 @@ class SetAlarmActivity : AppCompatActivity() {
         alarmManager.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, calendar.timeInMillis, pendingIntent)
 
         Toast.makeText(this, "Alarm wurde gesetzt!", Toast.LENGTH_LONG).show()
-        val formattedTime = String.format("%02d:%02d", hour, minute)
+        val formattedTime = String.format(Locale.getDefault(),"%02d:%02d", hour, minute)
 
         val sharedPreferences = getSharedPreferences("AlarmPrefs", MODE_PRIVATE)
         val editor = sharedPreferences.edit()

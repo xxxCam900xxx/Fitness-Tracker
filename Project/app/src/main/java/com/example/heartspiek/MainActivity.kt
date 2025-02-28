@@ -26,6 +26,7 @@ import com.google.android.gms.location.LocationRequest
 import com.google.android.gms.location.LocationResult
 import com.google.android.gms.location.LocationServices
 import com.google.android.gms.location.Priority
+import java.util.Locale
 
 class MainActivity : AppCompatActivity() {
 
@@ -159,7 +160,7 @@ class MainActivity : AppCompatActivity() {
                     val distance = lastLocation!!.distanceTo(newLocation)
                     if (distance > MIN_DISTANCE_THRESHOLD) {
                         totalDistance += distance
-                        tvDistance.text = String.format("%.2f km", totalDistance / 1000)
+                        tvDistance.text = String.format(Locale.getDefault(), "%.2f km", totalDistance / 1000)
                         saveDistance()
                     }
                 }
@@ -195,7 +196,7 @@ class MainActivity : AppCompatActivity() {
     private fun loadDistance() {
         val sharedPreferences = getSharedPreferences(PREFS_NAME, MODE_PRIVATE)
         totalDistance = sharedPreferences.getFloat(DISTANCE_KEY, 0f)
-        tvDistance.text = String.format("%.2f km", totalDistance / 1000)
+        tvDistance.text = String.format(Locale.getDefault(),"%.2f km", totalDistance / 1000)
     }
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)

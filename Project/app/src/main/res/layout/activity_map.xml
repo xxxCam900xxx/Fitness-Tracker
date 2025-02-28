@@ -83,7 +83,7 @@
             android:layout_weight="1"
             android:orientation="vertical">
 
-            <fragment
+            <FragmentContainerView
                 android:id="@+id/mapFragment"
                 class="com.google.android.gms.maps.SupportMapFragment"
                 android:layout_width="match_parent"
