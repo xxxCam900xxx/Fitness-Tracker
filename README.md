@@ -11,6 +11,16 @@ HeartsPiek ist eine **kostenfreie** Fitness-App, mit der die Nutzer ihre aufgeze
 ### Änderungen
 - Keine Änderungen wurden vorgenommen
 
+### Wie starte ich Linter? (Manuell)
+Gebe in der Android Studio Kommandozeile welche man unten links auf "Terminal" folgender Befehl ein:
+```sh
+./gradlew lint
+```
+Die Ergebnisse findest du dann unter:
+```bash
+app/build/reports/lint-results.html
+```
+
 ### Author & Entwickler
 - Came
 
