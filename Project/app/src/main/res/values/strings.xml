@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">HeartsPiek</string>
-    <string name="google_maps_api_key">AIzaSyDwyOVHnbpurMCgcrhPj2mX65Fbjm-gf4k</string>
+    <string name="google_maps_api_key">YOUR_API_KEY</string>
 
     <!-- Stats -->
     <string-array name="statistics_options">
